@@ -34,3 +34,11 @@ Prompt da imagem (built-in image_gen; uma geração): “Use case: identity-pres
 Sintaxe JavaScript verificada com Node. Referências locais dos HTML validadas. Servidor local respondeu HTTP 200. Imagem gerada inspecionada. Transferência das três imagens WebP: cerca de 270 KiB, sem pré-carregar leitores externos. Não requer build nem dependências para servir o site.
 
 Limitação: o navegador de testes não arrancou neste ambiente. Assim, a aparência nos vários ecrãs, interações e ritmo real do scroll não foram confirmados num browser automatizado. A pré-visualização foi aberta na aplicação para revisão do utilizador. Não se afirma validação visual completa.
+
+
+## Atualização de design — versão 2
+Referência inspecionada no Safari (abertura e captura) e nos ficheiros públicos de animação de Young Multi. Nova tipografia Archivo Black, grelhas geométricas, título cromado, vídeo central que se desloca para abrir espaço às plataformas, saída lateral da secção de música, cartões sticky de discografia e revelação circular do contacto. Sem reutilizar código nem ativos proprietários da referência.
+
+A discografia agrupa os dois singles e as três faixas de Além do Prazer. Os cartões tipográficos não são apresentados como capas oficiais. CSS adicional em dist/motion-design.css e animações em dist/motion-design.js. Em ecrãs estreitos, música passa a layout vertical e elimina a deslocação horizontal. Reduced motion remove os palcos presos e apresenta todos os elementos.
+
+Validação desta atualização: Safari aberto e vistas de hero/discografia inspecionadas por captura; sintaxe JS e referências locais verificadas. O controlo via JavaScript de Eventos Apple está desativado no Safari, pelo que o teste automatizado completo do scroll e das interações permanece pendente.
