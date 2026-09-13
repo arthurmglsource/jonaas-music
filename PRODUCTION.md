@@ -42,3 +42,9 @@ Referência inspecionada no Safari (abertura e captura) e nos ficheiros público
 A discografia agrupa os dois singles e as três faixas de Além do Prazer. Os cartões tipográficos não são apresentados como capas oficiais. CSS adicional em dist/motion-design.css e animações em dist/motion-design.js. Em ecrãs estreitos, música passa a layout vertical e elimina a deslocação horizontal. Reduced motion remove os palcos presos e apresenta todos os elementos.
 
 Validação desta atualização: Safari aberto e vistas de hero/discografia inspecionadas por captura; sintaxe JS e referências locais verificadas. O controlo via JavaScript de Eventos Apple está desativado no Safari, pelo que o teste automatizado completo do scroll e das interações permanece pendente.
+
+
+## Versão 3 — abertura e identidade
+Hero simplificada para retrato, logo e menu; slogans, CTA, localização e contador removidos. Logo vetorial redesenhada com base no wordmark fornecido, preservando a ideia dos A ligados e sublinhado. Original fornecido preservado nos outputs. Novo master: dist/assets/jonaas-logo.svg.
+Carregamento real da imagem e da logo, pausa visual mínima de 750 ms, abertura sequencial de cinco painéis e entrada do retrato. Timeout de segurança, Escape para dispensar e bypass com reduced-motion ou link direto. Sem percentagens simuladas. Hero limitada a 115svh no desktop e 108svh em ecrãs estreitos.
+Verificação: enquadramento e logo inspecionados no Safari em janela larga e estreita, cabeça inteira visível. JS validado. Controlo de scroll por Apple Events continua desativado; não se afirma teste automatizado completo da animação no Safari.
