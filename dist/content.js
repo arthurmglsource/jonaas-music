@@ -1,6 +1,7 @@
 window.JONAAS_CONTENT = {
   links: {
     instagram: 'https://www.instagram.com/jonaasmusic/',
+    spotifyArtist: 'https://open.spotify.com/artist/7eG0VxY3Ba4kfYypW2skQh',
     youtube: 'https://www.youtube.com/watch?v=-kclssxMYOQ',
     spotify: 'https://open.spotify.com/track/49gOZ8KgMgbIA402epjfaz?si=16449af1c2214111'
   },
