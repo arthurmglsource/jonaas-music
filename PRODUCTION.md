@@ -18,7 +18,7 @@ Scroll nativo, sem interceção da roda. Hero sticky com 2 alturas de ecrã de d
 Não foi gerado vídeo: não havia ferramenta de vídeo disponível. O movimento é realizado no navegador sobre a fotografia. O vídeo oficial fornecido abre num leitor YouTube; existe link direto alternativo. Spotify e YouTube dependem dos respetivos serviços, permissões de incorporação e disponibilidade; reprodução não foi verificada.
 
 ## Fontes e pressupostos
-Nacionalidade cabo-verdiana e residência em Portugal informadas pelo utilizador. Sem alegações de prémios, estatísticas, concertos futuros ou localidade específica. Contacto através do Instagram fornecido. Textos de apresentação são propostas editoriais. Títulos, durações e ano do single baseados nas capturas fornecidas; sem alegação de atualização em tempo real.
+Nacionalidade angolana e residência em Portugal informadas pelo utilizador. Sem alegações de prémios, estatísticas, concertos futuros ou localidade específica. Contacto através do Instagram fornecido. Textos de apresentação são propostas editoriais. Títulos, durações e ano do single baseados nas capturas fornecidas; sem alegação de atualização em tempo real.
 
 As referências de Young Multi orientaram contraste, escala tipográfica, acabamento cromado e composição. Não foi reutilizada a marca nem a fotografia de Young Multi. Bandeiras não usadas literalmente: a travessia CV → PT exprime a identidade de forma tipográfica.
 
