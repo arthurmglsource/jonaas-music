@@ -124,3 +124,9 @@
 @media(prefers-reduced-motion:reduce){.hero-picture .hero-photo{transform:none!important;animation:none!important}.performance-frame img{transition:none!important;transform:none!important}.performance-frame img:not(:first-child){display:none}.performance-frame img:first-child{opacity:1}}
 
 @media(max-width:600px){#menu a{font-size:clamp(28px,8.5vw,42px)}}
+
+/* Single cinematic performance portrait. */
+.performance-frame img{opacity:1;object-fit:cover;object-position:65% 35%;animation:performance-drift 24s ease-in-out infinite alternate;animation-play-state:paused}
+.performance.is-visible .performance-frame img{animation-play-state:running}
+@media(max-width:600px){.performance-frame img:first-child{object-fit:cover;object-position:67% 30%}.performance{height:70svh}.performance-frame{height:70svh}}
+@media(prefers-reduced-motion:reduce){.performance-frame img{animation:none!important;transform:none!important}}
