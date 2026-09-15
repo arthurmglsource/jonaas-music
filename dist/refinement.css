@@ -109,3 +109,18 @@
 
 @media(min-width:601px){.record-stack{margin-top:65px}}
 @media(max-width:600px){.record-stack{margin-top:52px}.hero-photo{mask-image:linear-gradient(0deg,#000 96%,transparent)}}
+/* Hero art direction and focused loader/menu/performance corrections. */
+.hero-picture{display:block;position:absolute;inset:0;overflow:hidden}
+.hero-picture .hero-photo{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:50% 12%;transform:none;mask-image:none;filter:none}
+.intro-opening .hero-picture .hero-photo{animation:hero-arrive-v9 1.5s .15s cubic-bezier(.76,0,.24,1) both}
+@keyframes hero-arrive-v9{from{opacity:.1;transform:scale(1.025)}to{opacity:1;transform:scale(1)}}
+#menu{background:#000;color:#F1EFE9}body.menu-open header{background:#000;color:#F1EFE9}
+.performance-frame img{opacity:0;animation:none;transition:none;object-position:var(--frame-position,65% 35%);filter:grayscale(1) contrast(1.08) brightness(.88)}
+.performance-frame img.is-current{opacity:1;transform:scale(1.015)}
+.performance-frame .performance-take{object-fit:cover}
+.performance-frame img[src*="portrait-original"]{object-fit:contain;background:#08090A}
+@media(max-width:700px){.hero-picture .hero-photo{width:100%;height:100%;object-fit:cover;object-position:50% 30%;transform:none;mask-image:none}.hero-signature{bottom:7%}}
+@media(max-width:600px){.performance{height:76svh}.performance-frame{position:relative;height:76svh;min-height:0;max-height:760px}.performance-frame img{object-fit:cover;object-position:var(--frame-position,65% 30%)}.performance-frame img:first-child{object-fit:contain;background:#08090A}.performance-caption{bottom:8%}.performance-frame img[src*="jonaas-natural"]{object-position:48% 25%}}
+@media(prefers-reduced-motion:reduce){.hero-picture .hero-photo{transform:none!important;animation:none!important}.performance-frame img{transition:none!important;transform:none!important}.performance-frame img:not(:first-child){display:none}.performance-frame img:first-child{opacity:1}}
+
+@media(max-width:600px){#menu a{font-size:clamp(28px,8.5vw,42px)}}

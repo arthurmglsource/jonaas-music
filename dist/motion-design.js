@@ -56,7 +56,15 @@ all('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{if(anchor(a.hash))
 addEventListener('load',()=>{if(location.hash)anchor(location.hash)});
 stack.addEventListener('pointermove',e=>{if(reduce.matches||mobile.matches||e.pointerType!=='mouse')return;const r=catalogue.getBoundingClientRect();pointerX=clamp((e.clientX-r.left)/r.width-.5,-.5,.5)*7;pointerY=-clamp(e.clientY/innerHeight-.5,-.5,.5)*5;schedule()});
 stack.addEventListener('pointerleave',()=>{pointerX=0;pointerY=0;schedule()});
-const performanceObserver=new IntersectionObserver(entries=>entries.forEach(e=>performance.classList.toggle('is-visible',e.isIntersecting)),{threshold:.05});performanceObserver.observe(performance);
+const takes=[...performanceFrame.querySelectorAll('img')];let takeIndex=0,takeTimer=null,inView=false,takesReady=false;
+function stopTakes(){clearTimeout(takeTimer);takeTimer=null;}
+function showTake(i){takes.forEach((img,n)=>img.classList.toggle('is-current',n===i));}
+function advanceTake(){stopTakes();if(!takesReady||!inView||reduce.matches||document.hidden)return;takeTimer=setTimeout(()=>{takeIndex=(takeIndex+1)%takes.length;showTake(takeIndex);advanceTake()},[280,260,300,240][takeIndex%4]);}
+function syncTakes(){stopTakes();if(reduce.matches){takeIndex=0;showTake(0)}else advanceTake()}
+showTake(0);
+Promise.all(takes.map(img=>img.decode().catch(()=>{}))).then(()=>{takesReady=true;syncTakes()});
+const performanceObserver=new IntersectionObserver(entries=>{inView=entries[0].isIntersecting;performance.classList.toggle('is-visible',inView);syncTakes()},{threshold:.05});performanceObserver.observe(performance);
+reduce.addEventListener('change',syncTakes);document.addEventListener('visibilitychange',syncTakes);
 // Local pointer motion with stable keyboard and touch targets.
 all('.platform,.footer-name').forEach(el=>{
  el.addEventListener('pointermove',e=>{if(reduce.matches||e.pointerType!=='mouse')return;const r=el.getBoundingClientRect();el.style.setProperty('--hover-x',`${(e.clientX-r.left-r.width/2)*.025}px`);el.style.setProperty('--hover-y',`${(e.clientY-r.top-r.height/2)*.06}px`)});
