@@ -11,7 +11,7 @@ addEventListener('pageshow',e=>{if(e.persisted)finish(true)});
 document.addEventListener('DOMContentLoaded',()=>{
 const main=document.querySelector('main'),header=document.querySelector('header');if(ended)return;main.inert=true;header.inert=true;
 const assets=[document.querySelector('.hero-photo'),document.querySelector('.hero-signature')];let complete=0;
-const ready=assets.map(img=>Promise.resolve().then(()=>img.decode()).catch(()=>{}).then(()=>{complete++;document.querySelector('.intro-line span').style.width=`${complete/assets.length*100}%`}));
+const ready=assets.map(img=>Promise.resolve().then(()=>img.decode?.()).catch(()=>{}).then(()=>{complete++;document.querySelector('.intro-line span').style.width=`${complete/assets.length*100}%`}));
 Promise.all([Promise.all(ready),new Promise(r=>setTimeout(r,750))]).then(()=>finish());
 },{once:true});
 })();
