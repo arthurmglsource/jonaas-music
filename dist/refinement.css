@@ -53,6 +53,10 @@
 .contact-content{padding-top:0;width:68%;max-width:950px}
 .contact .contact-link{border:0;margin-top:18px;padding:8px 0;font-size:clamp(24px,3.2vw,48px);color:var(--paper)}
 .contact-link:hover{opacity:.7}.contact-content>p{margin-top:12px}.socials{margin:26px 0 18px;gap:10px}
+.show-contact{display:flex;align-items:baseline;gap:15px;margin-top:18px;color:#F1EFE9;font:400 14px/1.4 var(--body);letter-spacing:.1px}
+.show-contact-label{color:#bcb8b0;font-size:11px;letter-spacing:.8px}
+.show-contact a{color:inherit;text-decoration:none;transition:opacity .25s}
+.show-contact a:hover,.show-contact a:focus-visible{opacity:.65}
 .socials a{border:0;transition:background .3s,color .3s,transform .3s}
 .socials a:hover,.socials a:focus-visible{color:var(--ink);background:var(--paper);transform:scale(1.12)}
 .contact footer{border:0;padding-top:12px;display:block;margin:0}
@@ -75,7 +79,7 @@
  .performance{height:100svh}.performance-frame{height:100svh}
  .contact-scroll{height:190svh}.contact-stage{height:100svh;min-height:0}
  .next-meeting{padding:95px 6% 100px;gap:25px}.next-meeting h2{font-size:15vw;line-height:1.12}.meeting-link{font-size:13px}
- .contact{padding:100px 7% 25px}.contact-content{width:100%;padding-top:0}.contact .contact-link{font-size:8vw;margin-top:24px}.socials{margin:22px 0 15px}
+ .contact{padding:100px 7% 25px}.contact-content{width:100%;padding-top:0}.contact .contact-link{font-size:8vw;margin-top:24px}.show-contact{align-items:flex-start;flex-direction:column;gap:5px;margin-top:16px;font-size:14px}.show-contact-label{font-size:11px}.socials{margin:22px 0 15px}
  .footer-name{font-size:21vw;margin-bottom:25px}.contact footer{font-size:9px;letter-spacing:.1px;max-width:290px}
 }
 @media(prefers-reduced-motion:reduce){
