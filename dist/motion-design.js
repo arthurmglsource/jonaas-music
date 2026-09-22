@@ -57,6 +57,8 @@ addEventListener('load',()=>{if(location.hash)anchor(location.hash)});
 stack.addEventListener('pointermove',e=>{if(reduce.matches||mobile.matches||e.pointerType!=='mouse')return;const r=catalogue.getBoundingClientRect();pointerX=clamp((e.clientX-r.left)/r.width-.5,-.5,.5)*7;pointerY=-clamp(e.clientY/innerHeight-.5,-.5,.5)*5;schedule()});
 stack.addEventListener('pointerleave',()=>{pointerX=0;pointerY=0;schedule()});
 const performanceObserver=new IntersectionObserver(entries=>{performance.classList.toggle('is-visible',entries[0].isIntersecting)},{threshold:.05});performanceObserver.observe(performance);
+const conversations=$('.conversations');
+if(conversations){if(reduce.matches)conversations.classList.add('is-visible');else{const conversationsObserver=new IntersectionObserver(entries=>{if(entries[0].isIntersecting){conversations.classList.add('is-visible');conversationsObserver.disconnect()}},{threshold:.12});conversationsObserver.observe(conversations)}}
 // Local pointer motion with stable keyboard and touch targets.
 all('.platform,.footer-name').forEach(el=>{
  el.addEventListener('pointermove',e=>{if(reduce.matches||e.pointerType!=='mouse')return;const r=el.getBoundingClientRect();el.style.setProperty('--hover-x',`${(e.clientX-r.left-r.width/2)*.025}px`);el.style.setProperty('--hover-y',`${(e.clientY-r.top-r.height/2)*.06}px`)});
