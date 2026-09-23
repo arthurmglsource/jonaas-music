@@ -78,7 +78,23 @@ if(conversations){
  const podcastObserver=new IntersectionObserver(syncPreview,{threshold:[0,.2,.4,.6,.8,1]});podcastCards.forEach(card=>podcastObserver.observe(card.querySelector('.conversation-image')));document.addEventListener('visibilitychange',syncPreview);reduce.addEventListener('change',()=>{conversations.classList.toggle('podcast-motion',!reduce.matches);if(reduce.matches)stopPreview();else{updatePodcastReveal();syncPreview()}})
 }
 const biography=$('.biography'),bioChapters=all('[data-bio-chapter]');
-if(biography){if(!reduce.matches)biography.classList.add('bio-motion');const bioChapterObserver=new IntersectionObserver(entries=>entries.forEach(entry=>entry.target.classList.toggle('is-visible',entry.isIntersecting)),{rootMargin:'-17% 0px -17% 0px',threshold:.08});bioChapters.forEach(chapter=>bioChapterObserver.observe(chapter))}
+if(biography){
+ const bioWords=all('.bio-copy p').flatMap(paragraph=>{const text=paragraph.textContent;paragraph.replaceChildren();const fragment=document.createDocumentFragment(),words=[];text.split(/(\s+)/).forEach(part=>{if(!part)return;if(/^\s+$/.test(part)){fragment.append(document.createTextNode(part));return}const span=document.createElement('span');span.className='bio-word';span.textContent=part;fragment.append(span);words.push(span)});paragraph.append(fragment);return words});
+ const toggle=$('.bio-audio-toggle'),audio=$('#biography-audio'),audioPath=audio?.dataset.audioSrc;let audioReady=false,bioFrame=0,focusedChapter=-1;
+ if(!reduce.matches)biography.classList.add('bio-motion');
+ function updateBio(){bioFrame=0;const focusY=innerHeight*.52;let best=-1,bestScore=-1;bioChapters.forEach((chapter,index)=>{const rect=chapter.getBoundingClientRect(),center=rect.top+rect.height*.5,focus=clamp(1-Math.abs(center-focusY)/(innerHeight*.82));chapter.style.setProperty('--chapter-focus',focus.toFixed(3));chapter.classList.toggle('is-current',focus>bestScore);if(focus>bestScore){bestScore=focus;best=index}chapter.querySelectorAll('.bio-word').forEach(word=>word.style.setProperty('--word-scroll',(reduce.matches?1:focus).toFixed(3)))});focusedChapter=best}
+ function queueBio(){if(!bioFrame)bioFrame=requestAnimationFrame(updateBio)}
+ function setPlaying(playing){if(!toggle)return;toggle.textContent=playing?'PAUSAR':'OUVIR';toggle.setAttribute('aria-label',playing?'Pausar música ambiente':'Reproduzir música ambiente')}
+ async function startBioAudio(){if(!audioReady||!audio)return;try{if(audio.paused){if(!audio.dataset.positioned){audio.currentTime=16;audio.dataset.positioned='true'}await audio.play();setPlaying(true)}}catch{setPlaying(false)}}
+ function stopBioAudio(){if(!audioReady||!audio||audio.paused)return;audio.pause();setPlaying(false)}
+ if(audio&&toggle&&audioPath){fetch(audioPath,{method:'HEAD'}).then(response=>{if(!response.ok)return;audio.src=audioPath;audio.volume=.12;audioReady=true;toggle.hidden=false;setPlaying(false);audio.addEventListener('ended',()=>{audio.dataset.positioned='';setPlaying(false)})}).catch(()=>{})}
+ toggle?.addEventListener('click',()=>{if(!audioReady)return;if(audio.paused)startBioAudio();else stopBioAudio()});
+ bioChapters.forEach(chapter=>chapter.addEventListener('pointermove',event=>{if(reduce.matches||event.pointerType!=='mouse')return;const radius=250;chapter.querySelectorAll('.bio-word').forEach(word=>{const rect=word.getBoundingClientRect(),distance=Math.hypot(event.clientX-(rect.left+rect.width/2),event.clientY-(rect.top+rect.height/2));word.style.setProperty('--word-hover',clamp(1-distance/radius).toFixed(3))})}));
+ bioChapters.forEach(chapter=>chapter.addEventListener('pointerleave',()=>chapter.querySelectorAll('.bio-word').forEach(word=>word.style.setProperty('--word-hover','0'))));
+ addEventListener('scroll',queueBio,{passive:true});addEventListener('resize',queueBio);queueBio();
+ const bioAudioObserver=new IntersectionObserver(entries=>{if(entries[0].isIntersecting){if(!reduce.matches)startBioAudio()}else stopBioAudio()},{threshold:.08});bioAudioObserver.observe(biography);
+ reduce.addEventListener('change',()=>{if(reduce.matches){stopBioAudio();bioWords.forEach(word=>word.style.setProperty('--word-scroll','1'))}queueBio()});
+}
 // Local pointer motion with stable keyboard and touch targets.
 all('.platform,.footer-name').forEach(el=>{
  el.addEventListener('pointermove',e=>{if(reduce.matches||e.pointerType!=='mouse')return;const r=el.getBoundingClientRect();el.style.setProperty('--hover-x',`${(e.clientX-r.left-r.width/2)*.025}px`);el.style.setProperty('--hover-y',`${(e.clientY-r.top-r.height/2)*.06}px`)});
