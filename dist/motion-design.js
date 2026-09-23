@@ -61,7 +61,7 @@ const conversations=$('.conversations');
 if(conversations){
  const podcastCards=all('.conversation');
  // Edit these seconds to change each real interview teaser without changing its card.
- const previewClips=[{videoId:'Hb0zGEP8JpM',previewStart:30,previewEnd:42}];
+ const previewClips=[{videoId:'y2InmIeLu4c',previewStart:20,previewEnd:35}];
  let podcastFrame=0,activePreview=-1,activePlayer=null,loopCheck=0,rotationTimer=0,apiPromise;
  const revealElement=(element,offset=0)=>{const top=element.getBoundingClientRect().top;const amount=clamp((innerHeight*.88-top)/(innerHeight*.56)-offset);element.style.setProperty('--podcast-reveal',amount.toFixed(3));element.style.setProperty('--podcast-mask',`${((1-amount)*100).toFixed(1)}%`);element.style.setProperty('--podcast-shift',`${((1-amount)*30).toFixed(1)}px`)};
  function updatePodcastReveal(){podcastFrame=0;if(reduce.matches)return;revealElement($('.conversations-heading h2'));podcastCards.forEach((card,index)=>revealElement(card,index*.13))}
@@ -83,8 +83,10 @@ if(biography){
  function queueBio(){if(!bioFrame)bioFrame=requestAnimationFrame(updateBio)}
  bioChapters.forEach(chapter=>chapter.addEventListener('pointermove',event=>{if(reduce.matches||event.pointerType!=='mouse')return;const radius=250;chapter.querySelectorAll('.bio-word').forEach(word=>{const rect=word.getBoundingClientRect(),distance=Math.hypot(event.clientX-(rect.left+rect.width/2),event.clientY-(rect.top+rect.height/2));word.style.setProperty('--word-hover',clamp(1-distance/radius).toFixed(3))})}));
  bioChapters.forEach(chapter=>chapter.addEventListener('pointerleave',()=>chapter.querySelectorAll('.bio-word').forEach(word=>word.style.setProperty('--word-hover','0'))));
+ const bioRevealObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('is-revealed')})},{threshold:.08,rootMargin:'0px 0px -25px 0px'});
+ bioChapters.forEach(chapter=>{const r=chapter.getBoundingClientRect();if(r.top<innerHeight*.88)chapter.classList.add('is-revealed');bioRevealObserver.observe(chapter)});
  addEventListener('scroll',queueBio,{passive:true});addEventListener('resize',queueBio);queueBio();
- reduce.addEventListener('change',()=>{if(reduce.matches)bioWords.forEach(word=>word.style.setProperty('--word-scroll','1'));queueBio()});
+ reduce.addEventListener('change',()=>{if(reduce.matches){bioWords.forEach(word=>word.style.setProperty('--word-scroll','1'));bioChapters.forEach(c=>c.classList.add('is-revealed'))}queueBio()});
 }
 // Local pointer motion with stable keyboard and touch targets.
 all('.platform,.footer-name').forEach(el=>{
