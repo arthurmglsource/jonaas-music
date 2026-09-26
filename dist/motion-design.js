@@ -61,7 +61,7 @@ const conversations=$('.conversations');
 if(conversations){
  const podcastCards=all('.conversation');
  // Edit these seconds to change each real interview teaser without changing its card.
- const previewClips=[{videoId:'y2InmIeLu4c',previewStart:20,previewEnd:35}];
+ const previewClips=[{videoId:'Hb0zGEP8JpM',previewStart:30,previewEnd:42}];
  let podcastFrame=0,activePreview=-1,activePlayer=null,loopCheck=0,rotationTimer=0,apiPromise;
  const revealElement=(element,offset=0)=>{const top=element.getBoundingClientRect().top;const amount=clamp((innerHeight*.88-top)/(innerHeight*.56)-offset);element.style.setProperty('--podcast-reveal',amount.toFixed(3));element.style.setProperty('--podcast-mask',`${((1-amount)*100).toFixed(1)}%`);element.style.setProperty('--podcast-shift',`${((1-amount)*30).toFixed(1)}px`)};
  function updatePodcastReveal(){podcastFrame=0;if(reduce.matches)return;revealElement($('.conversations-heading h2'));podcastCards.forEach((card,index)=>revealElement(card,index*.13))}
