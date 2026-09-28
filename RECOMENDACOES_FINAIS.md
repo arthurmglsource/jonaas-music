@@ -1,11 +1,11 @@
 # Recomendações Finais — Lançamento Oficial do Site de Jonaas
 
-Com o site publicado em produção no Vercel ([https://https-www-instagram-com-jonaasmusic.vercel.app](https://https-www-instagram-com-jonaasmusic.vercel.app)) e a versão `v1.1.0` registrada no GitHub, este guia reúne as ações recomendadas para a etapa final de entrega ao artista/cliente.
+Com o site publicado em produção no Vercel ([https://jonaas-music.vercel.app](https://jonaas-music.vercel.app)) e a versão `v1.1.0` registrada no GitHub, este guia reúne as ações recomendadas para a etapa final de entrega ao artista/cliente.
 
 ---
 
 ## 1. Conectar Domínio Próprio (Custom Domain)
-Atualmente o site está acessível pelo subdomínio gratuito da Vercel. Para uma imagem profissional perante a imprensa, gravadoras e fãs, o ideal é vincular um domínio personalizado (ex.: `jonaasmusic.com` ou `jonaas.pt`).
+Atualmente o site está acessível pelo subdomínio gratuito da Vercel (`https://jonaas-music.vercel.app`). Para uma imagem profissional perante a imprensa, gravadoras e fãs, o ideal é vincular um domínio personalizado (ex.: `jonaasmusic.com` ou `jonaas.pt`).
 
 ### Passo a passo no painel da Vercel:
 1. Acesse o projeto na [Vercel](https://vercel.com/mgl-arthur/https-www-instagram-com-jonaasmusic-https).
@@ -19,21 +19,25 @@ Atualmente o site está acessível pelo subdomínio gratuito da Vercel. Para uma
 ---
 
 ## 2. Meta Tags de Compartilhamento Social (Open Graph & WhatsApp)
-Para que os links compartilhados no WhatsApp, Instagram Stories, Twitter/X, Telegram e iMessage exibam um card elegante com imagem e descrição do artista:
+Para que os links compartilhados no WhatsApp, Instagram, Facebook, Twitter/X, Telegram e iMessage exibam um card elegante com imagem e descrição do artista:
 
 ```html
-<!-- Inserir dentro do <head> em dist/index.html -->
+<!-- Configurado dentro do <head> em dist/index.html -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://https-www-instagram-com-jonaasmusic.vercel.app/">
-<meta property="og:title" content="Jonaas — Website Oficial">
-<meta property="og:description" content="O universo de Jonaas. Música, vídeos, podcasts e biografia. Ouça 'Vou Fazer Mais Como'.">
-<meta property="og:image" content="https://https-www-instagram-com-jonaasmusic.vercel.app/assets/hero-desktop-v11.webp">
+<meta property="og:url" content="https://jonaas-music.vercel.app/">
+<meta property="og:title" content="Jonaas — Música">
+<meta property="og:description" content="O universo de Jonaas. Música, vídeos, discografia e trajetória.">
+<meta property="og:image" content="https://jonaas-music.vercel.app/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Jonaas — Website Oficial">
-<meta name="twitter:description" content="O universo de Jonaas. Música, vídeos, podcasts e biografia.">
-<meta name="twitter:image" content="https://https-www-instagram-com-jonaasmusic.vercel.app/assets/hero-desktop-v11.webp">
+<meta name="twitter:url" content="https://jonaas-music.vercel.app/">
+<meta name="twitter:title" content="Jonaas — Música">
+<meta name="twitter:description" content="O universo de Jonaas. Música, vídeos, discografia e trajetória.">
+<meta name="twitter:image" content="https://jonaas-music.vercel.app/assets/og-image.png">
 ```
 
 ---
