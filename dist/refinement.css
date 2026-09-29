@@ -79,7 +79,7 @@
  .performance{height:100svh}.performance-frame{height:100svh}
  .contact-scroll{height:190svh}.contact-stage{height:100svh;min-height:0}
  .next-meeting{padding:95px 6% 100px;gap:25px}.next-meeting h2{font-size:15vw;line-height:1.12}.meeting-link{font-size:13px}
- .contact{padding:100px 7% 25px}.contact-content{width:100%;padding-top:0}.contact .contact-link{font-size:8vw;margin-top:24px}.show-contact{align-items:flex-start;flex-direction:column;gap:5px;margin-top:16px;font-size:14px}.show-contact-label{font-size:11px}.socials{margin:22px 0 15px}
+ .contact{padding:100px 7% 25px}.contact-content{width:100%;padding-top:0}.contact .contact-link{font-size:8vw;margin-top:24px}.show-contact{align-items:flex-start;flex-direction:column;gap:5px;margin-top:16px;font-size:14px}.show-contact-label{font-size:11px}.socials{display:grid;grid-template-columns:repeat(3,52px);justify-items:center;align-items:center;gap:12px;width:fit-content;margin:22px 0 15px}.socials a{width:52px;height:52px;padding:13px}
  .footer-name{font-size:21vw;margin-bottom:25px}.contact footer{font-size:9px;letter-spacing:.1px;max-width:none}
 }
 @media(prefers-reduced-motion:reduce){
@@ -107,7 +107,7 @@
 .performance-frame img{animation:performance-drift 24s ease-in-out infinite alternate;animation-play-state:paused;transform-origin:65% 48%;will-change:transform}
 .performance.is-visible .performance-frame img{animation-play-state:running}
 @keyframes performance-drift{from{transform:scale(1.025) translate(-.5%,.25%)}to{transform:scale(1.085) translate(1.1%,-.6%)}}
-@media(max-width:700px){.hero-photo{height:min(calc(100svh - 70px),180vw)}.hero-shade{background:linear-gradient(0deg,#08090a35,transparent 25%)}}
+@media(max-width:700px){.hero-photo{height:min(calc(100svh - 70px),180vw)}.hero-shade{background:linear-gradient(0deg,#08090a35,transparent 25%)}.socials{display:grid;grid-template-columns:repeat(3,52px);justify-items:center;align-items:center;gap:12px;width:fit-content;margin:22px 0 15px}.socials a{width:52px;height:52px;padding:13px}}
 @media(max-width:600px){.record-body>a img{transform:none;box-shadow:3px 5px 0 #0002,0 10px 20px #0002}.record-stack{transition:none}}
 @media(prefers-reduced-motion:reduce){.hero-signature svg{transform:none!important;opacity:1!important}.hero-signature path,.hero-signature ellipse{animation:none!important;stroke-dashoffset:0!important}.record-stack,.record-body>a img{transition:none!important}.record-body>a:hover img,.record-body>a:focus-visible img{transform:none}.performance-frame img{animation:none!important;transform:none!important}}
 
